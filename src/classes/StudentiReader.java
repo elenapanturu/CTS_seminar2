@@ -11,21 +11,27 @@ public class StudentiReader implements ApplicantsReader{
     @Override
     public List<Aplicant> citireAplicanti(String numeFisier) throws FileNotFoundException {
         Scanner input = new Scanner(new File(numeFisier));
-        input.useDelimiter(",|\n");
-        List<Aplicant> studenti = new ArrayList<Aplicant>();
-
-        while (input.hasNext()) {
-
-                Student student = new Student();
-                ApplicantReader.citireAplicant(input, student);
-
-            int an_studii = input.nextInt();
-            String facultate = (input.next()).toString();
-           student.setAn_studii(an_studii);
-           student.setFacultate(facultate);
-            studenti.add(student);
-        }
+        input.useDelimiter(",\n");
+        List<Aplicant> studenti = citireAplicantDinScanner(input);
         input.close();
         return studenti;
     }
+
+    private List<Aplicant> citireAplicantDinScanner(Scanner scanner){
+        List<Aplicant> studenti = new ArrayList<>();
+
+        while (scanner.hasNext()) {
+
+            Student student = new Student();
+            ApplicantReader.citireAplicant(scanner, student);
+
+            int an_studii = scanner.nextInt();
+            String facultate = (scanner.next());
+            student.setAnStudii(an_studii);
+            student.setFacultate(facultate);
+            studenti.add(student);
+        }
+        return studenti;
+    }
+
 }

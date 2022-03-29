@@ -12,19 +12,24 @@ public class AngajatiReader implements ApplicantsReader {
     public List<Aplicant> citireAplicanti(String numeFisier) throws FileNotFoundException {
         Scanner input2 = new Scanner(new File(numeFisier));
         input2.useDelimiter(",");
-        List<Aplicant> angajati = new ArrayList<Aplicant>();
+        List<Aplicant> angajati = citireAplicantDinScanner(input2);
 
-        while (input2.hasNext()) {
-            Angajat angajat = new Angajat();
-            ApplicantReader.citireAplicant(input2, angajat);
-            int salariu = input2.nextInt();
-            String ocupatie = input2.next();
-           angajat.setOcupatie(ocupatie);
-           angajat.setSalariu(salariu);
-            angajati.add(angajat);
-        }
         input2.close();
         return angajati;
     }
+
+    private List<Aplicant> citireAplicantDinScanner(Scanner scanner){
+        List<Aplicant> angajati = new ArrayList<>();
+        while (scanner.hasNext()) {
+                Angajat angajat = new Angajat();
+                ApplicantReader.citireAplicant(scanner, angajat);
+                int salariu = scanner.nextInt();
+                String ocupatie = scanner.next();
+                angajat.setOcupatie(ocupatie);
+                angajat.setSalariu(salariu);
+                angajati.add(angajat);
+            }
+        return angajati;
     }
+}
 
