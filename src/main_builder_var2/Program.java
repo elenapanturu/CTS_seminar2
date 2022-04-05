@@ -1,7 +1,7 @@
 package main_builder_var2;
 
-import builder.AutobuzBuilder;
-import builder.AutobuzLinie;
+import builder_var2.AutobuzBuilder;
+import builder_var2.AutobuzLinie;
 
 public class Program {
     public static void main(String[] args) {
