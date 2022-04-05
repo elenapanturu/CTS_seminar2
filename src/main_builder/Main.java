@@ -1,4 +1,7 @@
-package builder;
+package main_builder;
+
+import builder.AutobuzBuilder;
+import builder.AutobuzLinie;
 
 public class Main {
     public static void main(String[] args) {
